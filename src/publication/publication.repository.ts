@@ -11,9 +11,6 @@ export class PublicationRepository {
     return this.prisma.publication.create(
       { 
         data: createPublicationDto, 
-        select: {
-          
-        } 
       }, 
     );
   }
@@ -32,5 +29,14 @@ export class PublicationRepository {
 
   remove(id: number) {
     return this.prisma.publication.delete({ where: { id }});
+  }
+
+  
+  findOneByPostId(postId: number) {
+    return this.prisma.publication.findFirst({ where : { postId }})
+  }
+
+  findOneByMediaId(mediaId: number) {
+    return this.prisma.publication.findFirst({ where : { mediaId }})
   }
 }

@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, forwardRef } from '@nestjs/common';
 import { CreatePublicationDto } from './dto/create-publication.dto';
 import { UpdatePublicationDto } from './dto/update-publication.dto';
 import { PostService } from 'src/post/post.service';
@@ -8,7 +8,9 @@ import { MediaService } from 'src/media/media.service';
 @Injectable()
 export class PublicationService {
   constructor(
-    private readonly postService: PostService, 
+    @Inject(forwardRef(() => PostService))
+    private readonly postService: PostService,
+    @Inject(forwardRef(() => MediaService)) 
     private readonly mediaService: MediaService,
     private readonly publicationRepository: PublicationRepository
     ){}
@@ -42,12 +44,20 @@ export class PublicationService {
     }
     await this.checkPostAndMedia(postId, mediaId);
 
-    return this.publicationRepository.update(id, updatePublicationDto);
+    return await this.publicationRepository.update(id, updatePublicationDto);
   }
 
   async remove(id: number) {
     const publication = await this.findOne(id);
-    return this.publicationRepository.remove(publication.id)
+    return await this.publicationRepository.remove(publication.id)
+  }
+
+  async findOneByPostId(postId: number) {
+    return await this.publicationRepository.findOneByPostId(postId)
+  }
+
+  async findOneByMediaId(mediaId: number) {
+    return await this.publicationRepository.findOneByMediaId(mediaId)
   }
 
   async checkPostAndMedia(postId: number, mediaId: number) {
