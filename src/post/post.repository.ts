@@ -8,9 +8,9 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class PostRepository {
   constructor(private readonly prisma: PrismaService){}
 
-  create(body: CreatePostDto) {
+  create(createPostDto: CreatePostDto) {
     return this.prisma.post.create({
-      data: body,
+      data: createPostDto,
     });
   }
 
