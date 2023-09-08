@@ -26,6 +26,7 @@
 
 Social Postfy is an API that allows you to schedule your social media posts at different plataforms.
 
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
