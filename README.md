@@ -1,8 +1,9 @@
 # Social Postify
-![social-postify-github](https://github.com/bandeira-de-melo/social-postify-back-end-nestjs/assets/83191364/f3f57960-71ed-444e-b7a1-98a78e8fabeb)
+
 
 
 <p align="center">
+  ![social-postify-github](https://github.com/bandeira-de-melo/social-postify-back-end-nestjs/assets/83191364/f3f57960-71ed-444e-b7a1-98a78e8fabeb)
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
